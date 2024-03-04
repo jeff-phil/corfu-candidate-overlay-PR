@@ -263,6 +263,8 @@ the end of word."
       ;; short-circuit conditions -- the earlier we return, if don't need to do
       ;; anything, the better.
       (if (and
+           ;; if don't ignore when region selected, cursor will be placed wrong.
+           (not (region-active-p))
            ;; we are not in minibuffer, as it looks awkward.
            (not (minibuffer-window-active-p (selected-window)))
            (not corfu-auto) ;; don't work with corfu-auto
